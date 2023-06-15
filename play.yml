@@ -1,0 +1,7 @@
+---
+- name: nginx deploymen
+  hosts: localhost
+  become: true
+  roles:
+    - nginxrole
+
