@@ -1,0 +1,27 @@
+cd /root/.docker/
+  ls
+  mv config.json config.json.bak
+  rm -rf /tmp/*
+  rm -rf ~/.kube/
+  rm -rf ~/.minikube/
+  minikube start --driver=docker --kubernetes-version=v1.23.0 --force
+  minikube status
+  kubectl get all
+kubectl get secrets
+
+
+kubectl create secret docker-registry regcred  --docker-server=543066576745.dkr.ecr.us-east-2.amazonaws.com  --docker-username=AWS  --docker-password=$(aws ecr get-login-password)
+
+ 
+kubectl port-forward --address 0.0.0.0 service/nginx-app 8080:8080
+
+
+aws ecr get-login-password --region us-east-2
+
+{
+  "auths": {
+    "your_account_id.dkr.ecr.your_region.amazonaws.com": {
+      "auth": "your_base64_encoded_credentials"
+    }
+  }
+}
